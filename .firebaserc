@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "castle-69ad8": {
+      "hosting": {
+        "afp": [
+          "castle-69ad8"
+        ]
+      }
+    }
+  }
+}
