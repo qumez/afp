@@ -1,0 +1,15 @@
+.item-details-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 8px;
+  .item-icon {
+    height: 48px;
+    width: 48px;
+    margin-right: 8px;
+  }
+  h1 {
+    display: inline;
+  }
+}

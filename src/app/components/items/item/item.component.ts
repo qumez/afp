@@ -16,6 +16,7 @@ import { delay, repeat, takeUntil, takeWhile } from 'rxjs/operators';
 import { Item } from 'src/app/data/models';
 import { ITEMS_SPRITE_ENDPOINT } from 'src/app/data/static-endpoints';
 import { GameDataService } from 'src/app/services/game-data.service';
+import { ItemService } from 'src/app/services/item.service';
 import { ItemDetailsComponent } from '../item-details/item-details.component';
 
 @Component({
@@ -35,7 +36,11 @@ export class ItemComponent implements AfterViewInit, OnDestroy {
 
   private sub: Subscription = new Subscription();
   private dialogRef: MatDialogRef<ItemDetailsComponent>;
-  constructor(private gameData: GameDataService, private dialog: MatDialog) {}
+  constructor(
+    private gameData: GameDataService,
+    private itemService: ItemService,
+    private dialog: MatDialog
+  ) {}
 
   ngAfterViewInit(): void {
     this.sub.add(
@@ -103,14 +108,8 @@ export class ItemComponent implements AfterViewInit, OnDestroy {
     );
   }
 
-  getStyle(): Partial<CSSStyleDeclaration> {
-    return this.item
-      ? {
-          backgroundImage: `url(${this.sprite})`,
-          backgroundPositionX: -this.item.image.x.toString() + 'px',
-          backgroundPositionY: -this.item.image.y.toString() + 'px',
-        }
-      : {};
+  getItemSprite(): Partial<CSSStyleDeclaration> {
+    return this.itemService.getItemSprite(this.item);
   }
 
   ngOnDestroy(): void {
