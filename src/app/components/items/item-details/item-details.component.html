@@ -1,0 +1,5 @@
+<div class="item-details">
+    {{item | json}}
+    <h1 class="item-details-header">{{item.name}}</h1>
+    <div class="item-details" [innerHTML]="item.description | safeHtml"></div>
+</div>
