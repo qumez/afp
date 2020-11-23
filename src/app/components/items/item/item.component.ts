@@ -27,6 +27,7 @@ import { ItemDetailsComponent } from '../item-details/item-details.component';
 export class ItemComponent implements AfterViewInit, OnDestroy {
   @ViewChild('iconRef') iconRef: ElementRef;
   @Input() item: Item;
+  isHovering: boolean;
   get sprite(): string {
     return ITEMS_SPRITE_ENDPOINT.replace(
       '$version',
@@ -58,6 +59,7 @@ export class ItemComponent implements AfterViewInit, OnDestroy {
   }
 
   openDialog(): void {
+    this.isHovering = true;
     const position: DialogPosition = {
       left: this.iconRef.nativeElement.getBoundingClientRect().left + 48 + 'px',
       top: this.iconRef.nativeElement.getBoundingClientRect().top + 'px',
@@ -75,6 +77,7 @@ export class ItemComponent implements AfterViewInit, OnDestroy {
 
     this.dialogRef.afterClosed().subscribe(() => {
       sub.unsubscribe();
+      this.isHovering = false;
     });
 
     sub.add(
