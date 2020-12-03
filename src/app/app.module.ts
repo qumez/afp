@@ -1,15 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ItemListComponent } from './components/items/item-list/item-list.component';
-import { HttpClientModule } from '@angular/common/http';
-import { SafeHtmlPipe } from './pipes/safe-html.pipe';
-import { ItemComponent } from './components/items/item/item.component';
 import { ItemDetailsComponent } from './components/items/item-details/item-details.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { ItemListComponent } from './components/items/item-list/item-list.component';
+import { ItemComponent } from './components/items/item/item.component';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -17,16 +18,18 @@ import { MatDialogModule } from '@angular/material/dialog';
     ItemListComponent,
     ItemComponent,
     SafeHtmlPipe,
-    ItemDetailsComponent
+    ItemDetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatToolbarModule,
+    MatButtonModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

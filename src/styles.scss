@@ -1,13 +1,73 @@
 /* You can add global styles to this file, and also import other style files */
+// @import "@angular/material/prebuilt-themes/deeppurple-amber";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 :root {
-    --stat: #048496;
-    --passive: #9c875a;
-    --status: #FFF;
-    --speed: #FFF;
-    --attack-speed: #FFCC00; 
-    --rarity-legendary: red;
+  --stat: #048496;
+  --passive: #9c875a;
+  --status: indigo;
+  --speed: brown;
+  --attack-speed: #ffcc00;
+  --rarity-legendary: red;
+  --active: pink;
+  --scale-mana: #00ccff;
+  --healing: green;
+  --magic-damage: purple;
+  --shield: #ffcc00;
+}
+
+mainText {
+  display: block;
+}
+attention {
+  font-weight: bold;
+}
+active {
+  color: var(--active);
+}
+status {
+  color: var(--status);
+}
+passive {
+  color: var(--passive);
+  font-weight: bold;
+}
+scaleMana {
+  color: var(--scale-mana);
+}
+magicDamage {
+  color: var(--magic-damage);
+}
+healing {
+  color: var(--healing);
+}
+shield {
+  color: var(--shield);
+}
+rules {
+  font-style: italic;
+}
+rarityMythic {
+}
+rarityLegendary {
+}
+physicalDamage {
+}
+keywordStealth {
+}
+trueDamage {
+}
+scaleLevel {
+}
+rarityGeneric {
+}
+speed {
 }
