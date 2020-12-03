@@ -1,11 +1,14 @@
 {
   "targets": {
-    "castle-69ad8": {
+    "quick-builds": {
       "hosting": {
         "afp": [
-          "castle-69ad8"
+          "quick-builds"
         ]
       }
     }
+  },
+  "projects": {
+    "default": "quick-builds"
   }
 }
