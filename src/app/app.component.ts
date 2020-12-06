@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
 import { filter, switchMap, take } from 'rxjs/operators';
@@ -11,7 +12,7 @@ import { GameDataService } from './services/game-data.service';
 export class AppComponent implements OnInit {
   title = 'afp';
 
-  constructor(private gameData: GameDataService) {}
+  constructor(private gameData: GameDataService, private http: HttpClient) {}
   ngOnInit(): void {
     this.gameData.version
       .pipe(
@@ -24,5 +25,16 @@ export class AppComponent implements OnInit {
       )
       .subscribe();
     this.gameData.getVersion();
+  }
+
+  callAuthTest() {
+    this.http
+      .get('http://localhost:5001/quick-builds/us-central1/authTest')
+      .subscribe((e) => alert(e));
+  }
+  callHelloWorld() {
+    this.http
+      .get('http://localhost:5001/quick-builds/us-central1/helloWorld')
+      .subscribe((e) => alert(e));
   }
 }

@@ -2,6 +2,9 @@
     <span>Test</span>
 </mat-toolbar>
 <div id="main-content">
-    <button mat-raised-button>Test</button>
+
+    <app-login-form></app-login-form>
+    <button mat-raised-button (click)="callAuthTest()">AuthTest</button>
+    <button mat-raised-button (click)="callHelloWorld()">Hw</button>
     <app-item-list></app-item-list>
 </div>
