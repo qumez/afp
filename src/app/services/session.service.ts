@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -7,7 +8,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SessionService {
   authToken$ = new BehaviorSubject<string>(null);
-  constructor(private auth: AngularFireAuth) {}
+  constructor(private auth: AngularFireAuth, private cookies: CookieService) {
+    this.authToken$.next(this.cookies.get('Authorization'));
+  }
 
   setAuthToken(token: string) {
     this.authToken$.next(token);
@@ -19,10 +22,12 @@ export class SessionService {
     try {
       res = await this.auth.signInWithEmailAndPassword(email, password);
       token = await res.user.getIdToken();
-      this.authToken$.next(token);
     } catch (ex) {
       console.error(ex);
-      this.authToken$.next(null);
+      token = null;
+    } finally {
+      this.authToken$.next(token);
+      this.cookies.set('Authorization', token);
     }
   }
 

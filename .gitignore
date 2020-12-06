@@ -48,3 +48,8 @@ Thumbs.db
 
 # firebase hosting cache
 **/hosting.*.cache
+
+# firebase debug logs
+ui-debug.log
+firebase-debug.log
+firestore-debug.log
