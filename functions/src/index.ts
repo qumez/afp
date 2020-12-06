@@ -29,6 +29,24 @@ exports.authTest = functions.https.onRequest(async (request, response) => {
   } else {
     response.sendStatus(403);
   }
+  return;
+});
+
+exports.force403 = functions.https.onRequest((request, response) => {
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Headers', 'Authorization');
+
+  if (request.method === 'OPTIONS') {
+    response.sendStatus(200);
+    console.log('Wefweofihjij');
+    return;
+  }
+  response.status(403).send({
+    ok: 'false',
+    error: {
+      message: 'you suck',
+    },
+  });
 });
 
 async function authenticateRequest(

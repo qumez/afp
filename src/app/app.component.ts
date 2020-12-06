@@ -37,4 +37,9 @@ export class AppComponent implements OnInit {
       .get('http://localhost:5001/quick-builds/us-central1/helloWorld')
       .subscribe((e) => alert(e));
   }
+  call403() {
+    this.http
+      .get('http://localhost:5001/quick-builds/us-central1/force403')
+      .subscribe((e) => alert(e));
+  }
 }
