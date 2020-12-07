@@ -74,3 +74,10 @@ export interface ItemTreeItem {
   header: string;
   tags: string[];
 }
+
+export interface AppUser {
+  uid: string;
+  email: string;
+  displayName?: string;
+  emailVerified: boolean;
+}

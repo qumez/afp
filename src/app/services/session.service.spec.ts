@@ -18,8 +18,8 @@ describe('SessionService', () => {
   });
 
   it('should sign in', async (done) => {
-    service.authToken$.subscribe((res) => {
-      if (res) {
+    service.stateChanged.subscribe((res) => {
+      if (res.user) {
         done();
       }
     });

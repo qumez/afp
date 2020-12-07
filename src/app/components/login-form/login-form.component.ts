@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { FormBuilder } from '@angular/forms';
-import { User } from 'firebase';
 import { Subscription } from 'rxjs';
-import { SessionService } from '../../services/session.service';
+import { AppUser } from 'src/app/data/models';
+import {
+  AppSessionState,
+  SessionService,
+} from '../../services/session.service';
 
 @Component({
   selector: 'app-login-form',
@@ -16,20 +18,16 @@ export class LoginFormComponent implements OnInit {
     password: string;
   } = {
     username: 'comes132@gmail.com',
-    password: 'password',
+    password: 'socom2owns',
   };
   loginFormGroup = this.fb.group({
     username: 'comes132@gmail.com',
-    password: 'password',
+    password: 'socom2owns',
   });
-  user: User;
+  user: AppUser;
   sub = new Subscription();
 
-  constructor(
-    private fb: FormBuilder,
-    private auth: AngularFireAuth,
-    private session: SessionService
-  ) {}
+  constructor(private fb: FormBuilder, private session: SessionService) {}
 
   ngOnInit(): void {
     this.sub.add(
@@ -39,8 +37,8 @@ export class LoginFormComponent implements OnInit {
     );
 
     this.sub.add(
-      this.auth.user.subscribe((user) => {
-        this.user = user;
+      this.session.stateChanged.subscribe((state: AppSessionState) => {
+        this.user = state.user;
       })
     );
   }
@@ -53,9 +51,7 @@ export class LoginFormComponent implements OnInit {
     console.log(loginResponse);
   }
 
-  async logOut() {
-    this.auth.signOut().then(() => {
-      this.session.setAuthToken(null);
-    });
+  logOut() {
+    this.session.signOut();
   }
 }

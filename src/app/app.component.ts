@@ -27,16 +27,19 @@ export class AppComponent implements OnInit {
     this.gameData.getVersion();
   }
 
+  /*Debug - to remove */
   callAuthTest() {
     this.http
       .get('http://localhost:5001/quick-builds/us-central1/authTest')
       .subscribe((e) => alert(e));
   }
+  /*Debug - to remove */
   callHelloWorld() {
     this.http
       .get('http://localhost:5001/quick-builds/us-central1/helloWorld')
       .subscribe((e) => alert(e));
   }
+  /*Debug - to remove */
   call403() {
     this.http
       .get('http://localhost:5001/quick-builds/us-central1/force403')
