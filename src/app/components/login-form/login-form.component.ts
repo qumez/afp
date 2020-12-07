@@ -18,15 +18,14 @@ export class LoginFormComponent implements OnInit {
     password: string;
   } = {
     username: 'comes132@gmail.com',
-    password: 'socom2owns',
+    password: 'password',
   };
   loginFormGroup = this.fb.group({
     username: 'comes132@gmail.com',
-    password: 'socom2owns',
+    password: 'password',
   });
-  user: AppUser;
   sub = new Subscription();
-
+  user: AppUser;
   constructor(private fb: FormBuilder, private session: SessionService) {}
 
   ngOnInit(): void {
@@ -43,12 +42,8 @@ export class LoginFormComponent implements OnInit {
     );
   }
 
-  async login() {
-    const loginResponse = await this.session.signIn(
-      this.loginDetails.username,
-      this.loginDetails.password
-    );
-    console.log(loginResponse);
+  login() {
+    this.session.signIn(this.loginDetails.username, this.loginDetails.password);
   }
 
   logOut() {

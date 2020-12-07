@@ -18,12 +18,8 @@ export class TokenInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log('heheh');
     return this.session.stateChanged.pipe(
       take(1),
-      tap((e) => {
-        console.log(e);
-      }),
       switchMap((state) => {
         const token = state.refreshToken;
         if (token) {
