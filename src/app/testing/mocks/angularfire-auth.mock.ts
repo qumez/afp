@@ -12,4 +12,7 @@ export const AngularFireAuthMock = {
       },
     };
   },
+  authState: new BehaviorSubject<any>({
+    getIdToken: () => {},
+  }),
 };

@@ -36,7 +36,6 @@ export class SessionService extends ObservableStore<AppSessionState> {
 
     this.loggedInSubject = new Subject();
     this.auth.authState.subscribe(async (credential) => {
-      console.log(credential);
       if (credential) {
         const state = this.getState();
         state.user = this.getFirebaseUserDetails(credential);
